@@ -1,0 +1,13 @@
+*.mp3
+*.m4a
+*.wav
+*.flac
+
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+.venv/*
+
+temp/*

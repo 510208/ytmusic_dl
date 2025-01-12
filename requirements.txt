@@ -1,0 +1,8 @@
+pytubefix
+eyed3
+requests
+click
+pillow
+tqdm
+pydub
+pyperclip
