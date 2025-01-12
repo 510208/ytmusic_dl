@@ -154,6 +154,12 @@ python main.py listen
 
 本專案使用 MIT 許可證。詳情請參閱 `LICENSE` 檔案。
 
+## 截圖
+| | |
+|:---|:---:|
+| 下載完的文件資料夾畫面（[圖中的播放清單](https://www.youtube.com/playlist?list=PL94Y3aNMrbWhYHWL2aDd6pLOTqyV2JBT2)） | ![image](https://github.com/user-attachments/assets/b641ccc3-fc49-4bb1-b246-83a8c9f1086e) |
+| 終端機顯示的說明畫面 | ![image](https://github.com/user-attachments/assets/b2ffb4e7-6b2b-429e-ba89-8bc6684e6b3d) |
+
 ## 貢獻
 
 歡迎提交 Issue 或 Pull Request 來幫助改進這個專案。
