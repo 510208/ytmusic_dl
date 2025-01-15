@@ -6,3 +6,4 @@ pillow
 tqdm
 pydub
 pyperclip
+win10toast
