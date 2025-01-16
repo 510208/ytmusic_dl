@@ -319,7 +319,12 @@ def listen(no_notifaction):
             clipboard = pyperclip.paste()
             if re.match(r'https://www.youtube.com/watch\?v=.*', clipboard):
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n開始下載影片', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n開始下載影片',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 logging.info(f'偵測到 YouTube 網址：{clipboard}')
                 asyncio.run(download_single(clipboard, './', False, False))
                 # 桌面通知
@@ -334,7 +339,12 @@ def listen(no_notifaction):
             # 監聽是否為播放清單
             elif re.match(r'https://www.youtube.com/playlist\?list=.*', clipboard):
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n開始下載播放清單', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n開始下載影片',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 logging.info(f'偵測到 YouTube 播放清單：{clipboard}')
                 asyncio.run(download_video(clipboard, './', False, False, 5))
                 # 桌面通知
@@ -349,7 +359,12 @@ def listen(no_notifaction):
             # 監聽是否為 YouTube Music 影片網址，如果是就將前方的 music 去除
             elif re.match(r'https://music.youtube.com/watch\?v=.*', clipboard):
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n開始下載影片', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n開始下載影片',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 logging.info(f'偵測到 YouTube Music 網址：{clipboard}')
                 clipboard = clipboard.replace('music.', '')
                 asyncio.run(download_single(clipboard, './', False, False))
