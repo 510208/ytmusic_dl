@@ -23,7 +23,8 @@ from functools import partial
 from eyed3.id3.frames import ImageFrame
 from pydub import AudioSegment
 import pyperclip
-from win10toast import ToastNotifier
+import plyer.platforms.win.notification
+from plyer import notification
 
 # 設定log
 logging.basicConfig(
@@ -306,8 +307,12 @@ def listen(no_notifaction):
     --no-notifaction, -n    關閉監聽模式的桌面通知
     """
     logging.info('開始監聽剪貼簿，如需退出此模式，執行 Ctrl + C 即可')
-    tn = ToastNotifier()
-    tn.show_toast('YouTube Music Downloader', '已啟動監聽模式，\n若要退出請回到終端視窗中按下 Ctrl + C 即可！', duration=10)
+    notification.notify(
+        title='YouTube Music Downloader',
+        message='已啟動監聽模式，若要退出請回到終端視窗中按下 Ctrl + C 即可！',
+        app_name='YouTube Music Downloader',
+        timeout=10
+    )
     try:
         while True:
             logging.debug('觸發定期監聽...')
@@ -319,7 +324,12 @@ def listen(no_notifaction):
                 asyncio.run(download_single(clipboard, './', False, False))
                 # 桌面通知
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n影片下載完成', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n影片下載完成',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 # pyperclip.copy('')
             # 監聽是否為播放清單
             elif re.match(r'https://www.youtube.com/playlist\?list=.*', clipboard):
@@ -329,7 +339,12 @@ def listen(no_notifaction):
                 asyncio.run(download_video(clipboard, './', False, False, 5))
                 # 桌面通知
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n播放清單下載完成', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n影片下載完成',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 # pyperclip.copy('')
             # 監聽是否為 YouTube Music 影片網址，如果是就將前方的 music 去除
             elif re.match(r'https://music.youtube.com/watch\?v=.*', clipboard):
@@ -340,7 +355,12 @@ def listen(no_notifaction):
                 asyncio.run(download_single(clipboard, './', False, False))
                 # 桌面通知
                 if not no_notifaction:
-                    tn.show_toast('YouTube Music Downloader', f'抓取到連結 {clipboard}\n影片下載完成', duration=10)
+                    notification.notify(
+                        title='YouTube Music Downloader',
+                        message=f'抓取到連結 {clipboard}\n影片下載完成',
+                        app_name='YouTube Music Downloader',
+                        timeout=10
+                    )
                 # pyperclip.copy('')
             time.sleep(0.5)
     except KeyboardInterrupt:
